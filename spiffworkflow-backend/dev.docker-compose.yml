@@ -11,6 +11,7 @@ services:
       SPIFFWORKFLOW_BACKEND_LOG_LEVEL: "INFO"
       SPIFFWORKFLOW_BACKEND_ENV: "${SPIFFWORKFLOW_BACKEND_ENV:-local_development}"
       SPIFFWORKFLOW_BACKEND_LOAD_FIXTURE_DATA: ""
+      SPIFFWORKFLOW_BACKEND_OPEN_ID_ADDITIONAL_VALID_ISSUERS: "http://167.86.89.45:7002/admin/realms/spiffworkflow-local"
       XDG_CACHE_HOME: "/app/.cache"
     env_file:
       - path: .env
