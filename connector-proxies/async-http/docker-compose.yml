@@ -4,7 +4,7 @@ services:
       context: connector-proxies/async-http
       dockerfile: Dockerfile
     environment:
-      HOST: "0.0.0.0"
+      HOST: "167.86.89.45"
       PORT: "${CONNECTOR_PROXY_ASYNC_HTTP_PORT:-8200}"
       XDG_CACHE_HOME: "/app/.cache"
     ports:
