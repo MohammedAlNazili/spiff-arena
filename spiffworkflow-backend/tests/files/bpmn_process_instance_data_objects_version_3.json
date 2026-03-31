@@ -245,7 +245,7 @@
             "parameters": {
               "url": {
                 "type": "str",
-                "value": "\"http://localhost:7000/v1.0/status\""
+                "value": "\"http://167.86.89.45:7000/v1.0/status\""
               }
             },
             "resultVariable": "the_response"

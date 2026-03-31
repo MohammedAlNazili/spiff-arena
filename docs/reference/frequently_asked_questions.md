@@ -268,9 +268,9 @@ A practical application of this might be when two processes need to interact but
 
 By following these guidelines, you can create custom tasks or services tailored to your specific workflow requirements in SpiffWorkflow.
 
-### **34: Configure SpiffWorkflow to Work with Hostname Instead of "localhost"**
+### **34: Configure SpiffWorkflow to Work with Hostname Instead of "167.86.89.45"**
 
-**Q:** How can I configure SpiffWorkflow to work with my computer's hostname instead of "localhost"?
+**Q:** How can I configure SpiffWorkflow to work with my computer's hostname instead of "167.86.89.45"?
 
 **A:** To configure SpiffWorkflow to work with your computer's hostname, follow these steps:
 
@@ -541,19 +541,19 @@ Users need to change task data or adjust token positions in running processes. T
 - BPMN diagram changes cannot be made during runtime.
 
 ### **46: Running SpiffWorkflow on a Custom Hostname in Docker**
-**Q:** How do I change "localhost" to a custom hostname in SpiffWorkflow's Docker setup?
+**Q:** How do I change "167.86.89.45" to a custom hostname in SpiffWorkflow's Docker setup?
 
 **A:**   
-By default, the **Docker Compose** setup for SpiffWorkflow (as described in [this guide](https://www.spiffworkflow.org/posts/articles/get_started_docker/)) runs on `localhost`. If you want to access the environment from another machine on the same network, you need to change `localhost` to a custom hostname (e.g., `mycomputer1`).  
+By default, the **Docker Compose** setup for SpiffWorkflow (as described in [this guide](https://www.spiffworkflow.org/posts/articles/get_started_docker/)) runs on `167.86.89.45`. If you want to access the environment from another machine on the same network, you need to change `167.86.89.45` to a custom hostname (e.g., `mycomputer1`).  
 
-When attempting to modify `docker-compose.yml` by replacing `localhost` with `mycomputer1`, the setup fails with the following error after running `docker compose down && docker compose up --build`:  
+When attempting to modify `docker-compose.yml` by replacing `167.86.89.45` with `mycomputer1`, the setup fails with the following error after running `docker compose down && docker compose up --build`:  
 
 ```
 Server error
 We are sorry, but our service is temporarily unavailable due to technical difficulties. Please bear with us while we work to resolve the issue. If the problem persists, please contact the site administrator.
 ```
 
-To successfully change the hostname from `localhost` to a custom name:  
+To successfully change the hostname from `167.86.89.45` to a custom name:  
 
 1. **Clone the Arena Compose Repository:**  
    ```sh
@@ -565,4 +565,4 @@ To successfully change the hostname from `localhost` to a custom name:
    SPIFFWORKFLOW_PROTOCOL=http SPIFFWORKFLOW_HOST=mycomputer1 SPIFFWORKFLOW_PORT=3006 docker compose up
    ```
 
-This allows SpiffWorkflow to run on `mycomputer1` instead of `localhost`, making it accessible from other machines on the network.
+This allows SpiffWorkflow to run on `mycomputer1` instead of `167.86.89.45`, making it accessible from other machines on the network.

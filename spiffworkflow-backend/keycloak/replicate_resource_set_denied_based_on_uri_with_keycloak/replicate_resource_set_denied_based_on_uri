@@ -22,7 +22,7 @@ docker stop keycloak
 docker start keycloak
 sleep 10
 
-HOSTNAME=localhost:8080
+HOSTNAME=167.86.89.45:8080
 REALM_NAME=testing
 USERS=(
   ciadmin1

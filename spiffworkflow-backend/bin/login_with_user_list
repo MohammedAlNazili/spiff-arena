@@ -13,10 +13,10 @@ script_dir="$(
 )"
 
 if [[ -z "${KEYCLOAK_BASE_URL:-}" ]]; then
-  export KEYCLOAK_BASE_URL=http://localhost:7002
+  export KEYCLOAK_BASE_URL=http://167.86.89.45:7002
 fi
 if [[ -z "${BACKEND_BASE_URL:-}" ]]; then
-  export BACKEND_BASE_URL=http://localhost:7000
+  export BACKEND_BASE_URL=http://167.86.89.45:7000
 fi
 
 user_list="${1}"

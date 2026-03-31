@@ -23,7 +23,7 @@ SPIFFWORKFLOW_BACKEND_AUTH_CONFIGS = [
     {
     "identifier":"default",
     "label":"internal openid",
-    "uri":"http://localhost:7000/openid",
+    "uri":"http://167.86.89.45:7000/openid",
     "client_id":"spiffworkflow-backend",
     "client_secret":"JXeQExm0JhQPLumgHtIIqf52bDalHz0q"
     }

@@ -117,7 +117,7 @@ def login(
     frontend_url = re.sub(r":(80|443)$", "", frontend_url)
 
     # strip trailing slash off redirect_url, since we want
-    # redirect url http://localhost/ to be valid if the frontend url is http://localhost frontend, etc
+    # redirect url http://167.86.89.45/ to be valid if the frontend url is http://167.86.89.45 frontend, etc
     redirect_url_for_check = redirect_url.rstrip("/")
 
     if not redirect_url_for_check.startswith(frontend_url):
@@ -264,7 +264,7 @@ def _set_new_access_token_in_cookie(
         "",
         current_app.config["SPIFFWORKFLOW_BACKEND_URL_FOR_FRONTEND"],
     )
-    if domain_for_frontend_cookie and domain_for_frontend_cookie.startswith("localhost"):
+    if domain_for_frontend_cookie and domain_for_frontend_cookie.startswith("167.86.89.45"):
         domain_for_frontend_cookie = None
 
     # fixme - we should not be passing the access token back to the client

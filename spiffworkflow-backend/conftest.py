@@ -53,7 +53,7 @@ def app(connexion_app: FlaskApp) -> Generator[Flask, Any, Any]:  # noqa
 
 @pytest.fixture(scope="session")
 def client(connexion_app: FlaskApp) -> starlette.testclient.TestClient:  # noqa
-    return connexion_app.test_client(follow_redirects=False, base_url="http://localhost")
+    return connexion_app.test_client(follow_redirects=False, base_url="http://167.86.89.45")
 
 
 @pytest.fixture()

@@ -475,7 +475,7 @@ class AuthorizationService:
                 field_number = field_index + 1
                 user_attributes[f"tenant_specific_field_{field_number}"] = user_info[tenant_specific_field]
 
-        # example value for service: http://localhost:7002/realms/spiffworkflow (keycloak url)
+        # example value for service: http://167.86.89.45:7002/realms/spiffworkflow (keycloak url)
         user_model = (
             UserModel.query.filter(UserModel.service == user_attributes["service"])
             .filter(UserModel.service_id == user_attributes["service_id"])

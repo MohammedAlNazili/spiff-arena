@@ -22,20 +22,20 @@ class TestOpenidBlueprint(BaseTest):
     ) -> None:
         """Test discovery endpoints."""
 
-        # SPIFFWORKFLOW_BACKEND_URL is set to http://localhost in unit_testing.py, but we ignore it anyway. See mock below.
+        # SPIFFWORKFLOW_BACKEND_URL is set to http://167.86.89.45 in unit_testing.py, but we ignore it anyway. See mock below.
         response = client.get("/openid/.well-known/openid-configuration")
         discovered_urls = response.json()
-        assert "http://localhost/openid" == discovered_urls["issuer"]
-        assert "http://localhost/openid/auth" == discovered_urls["authorization_endpoint"]
-        assert "http://localhost/openid/token" == discovered_urls["token_endpoint"]
+        assert "http://167.86.89.45/openid" == discovered_urls["issuer"]
+        assert "http://167.86.89.45/openid/auth" == discovered_urls["authorization_endpoint"]
+        assert "http://167.86.89.45/openid/token" == discovered_urls["token_endpoint"]
 
         with self.app_config_mock(app, "SPIFFWORKFLOW_BACKEND_URL", None):
             response = client.get("/openid/.well-known/openid-configuration")
             discovered_urls = response.json()
-            # in unit tests, request.host_url will not have the port but it will have it in actual localhost flask server
-            assert "http://localhost/openid" == discovered_urls["issuer"]
-            assert "http://localhost/openid/auth" == discovered_urls["authorization_endpoint"]
-            assert "http://localhost/openid/token" == discovered_urls["token_endpoint"]
+            # in unit tests, request.host_url will not have the port but it will have it in actual 167.86.89.45 flask server
+            assert "http://167.86.89.45/openid" == discovered_urls["issuer"]
+            assert "http://167.86.89.45/openid/auth" == discovered_urls["authorization_endpoint"]
+            assert "http://167.86.89.45/openid/token" == discovered_urls["token_endpoint"]
 
     def test_get_login_page(
         self,
@@ -68,7 +68,7 @@ class TestOpenidBlueprint(BaseTest):
         data = {
             "grant_type": "authorization_code",
             "code": code,
-            "redirect_url": "http://localhost:7000/v1.0/login_return",
+            "redirect_url": "http://167.86.89.45:7000/v1.0/login_return",
         }
         response = client.post("/openid/token", data=data, headers=headers)
         assert response.status_code == 200

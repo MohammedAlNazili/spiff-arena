@@ -20,7 +20,7 @@
       <bpmn:extensionElements>
         <spiffworkflow:serviceTaskOperator id="http/GetRequestV2" resultVariable="the_response">
           <spiffworkflow:parameters>
-            <spiffworkflow:parameter id="url" type="str" value="&#34;http://localhost:7000/v1.0/status&#34;" />
+            <spiffworkflow:parameter id="url" type="str" value="&#34;http://167.86.89.45:7000/v1.0/status&#34;" />
             <spiffworkflow:parameter id="headers" type="any" />
             <spiffworkflow:parameter id="params" type="any" />
             <spiffworkflow:parameter id="basic_auth_username" type="str" />

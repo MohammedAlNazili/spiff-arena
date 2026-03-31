@@ -43,7 +43,7 @@ function wait_for_keycloak_to_be_up() {
   local max_attempts=600
   echo "waiting for keycloak to come up..."
   local attempts=0
-  local url="localhost:7009/health/ready"
+  local url="167.86.89.45:7009/health/ready"
   while [[ "$(curl -s -o /dev/null -w '%{http_code}' "$url")" != "200" ]]; do
     if [[ "$attempts" -gt "$max_attempts" ]]; then
       echo >&2 "ERROR: $url not up after $max_attempts attempts. There is probably a problem"
@@ -84,13 +84,13 @@ perl -pi -e "s/replace-me-with-spiff-backend-host-and-path/${spiff_subdomain}/g"
 wait_for_keycloak_to_be_up
 # turn off SSL first
 if [ "${TURN_OFF_SSL:-}" == "true" ]; then
-  docker exec -it keycloak /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin
+  docker exec -it keycloak /opt/keycloak/bin/kcadm.sh config credentials --server http://167.86.89.45:8080 --realm master --user admin --password admin
   docker exec -it keycloak /opt/keycloak/bin/kcadm.sh update realms/master -s sslRequired=NONE
   echo 'turned off SSL requirement'
 fi
 # add spiffworkflow-local realm
-token=$(curl --fail -s -X POST "http://localhost:7002/realms/master/protocol/openid-connect/token" -H 'Content-Type: application/x-www-form-urlencoded' -d 'grant_type=password&client_id=admin-cli&username=admin&password=admin' | jq -r .access_token)
-curl --fail -s -X POST "http://localhost:7002/admin/realms" -H "Authorization: Bearer $token" -H 'Content-Type: application/json' --data "@$file_path" -v
+token=$(curl --fail -s -X POST "http://167.86.89.45:7002/realms/master/protocol/openid-connect/token" -H 'Content-Type: application/x-www-form-urlencoded' -d 'grant_type=password&client_id=admin-cli&username=admin&password=admin' | jq -r .access_token)
+curl --fail -s -X POST "http://167.86.89.45:7002/admin/realms" -H "Authorization: Bearer $token" -H 'Content-Type: application/json' --data "@$file_path" -v
 echo 'imported realms'
 
 # finally turn off ssl for spiffworkflow-local realm
@@ -112,13 +112,13 @@ docker start keycloak
 # NOTE: creds - user1 / password
 
 #### Example resource_set call
-#   GET /realms/quarkus/authz/protection/resource_set?matchingUri=true&deep=true&max=-1&exactName=false&uri=%2Fapi%2Fusers%2Fme HTTP/1.1..Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjZklBRE5feHhDSm1Wa1d5Ti1QTlhFRXZNVVdzMnI2OEN4dG1oRUROelhVIn0.eyJleHAiOjE2NTcxMzgzNzAsImlhdCI6MTY1NzEzODA3MCwianRpIjoiY2I1OTc0OTAtYzJjMi00YTFkLThkNmQtMzBkOGU5YzE1YTNlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0MzI3OS9yZWFsbXMvcXVhcmt1cyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI5NDhjNTllYy00NmVkLTRkOTktYWE0My0wMjkwMDAyOWI5MzAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiYWNrZW5kLXNlcnZpY2UiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiXX0sInJlc291cmNlX2FjY2VzcyI6eyJiYWNrZW5kLXNlcnZpY2UiOnsicm9sZXMiOlsidW1hX3Byb3RlY3Rpb24iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImNsaWVudEhvc3QiOiIxNzIuMTcuMC4xIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRJZCI6ImJhY2tlbmQtc2VydmljZSIsInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1iYWNrZW5kLXNlcnZpY2UiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE3LjAuMSIsImVtYWlsIjoic2VydmljZS1hY2NvdW50LWJhY2tlbmQtc2VydmljZUBwbGFjZWhvbGRlci5vcmcifQ.VRcdoJQO5KWeDFprl6g21Gp9lAqLH1GUAegZPslI9lcL7wdEDLauleTs7cr9ODvXpBbbWVZirP445H3bIfEpyZ2UiKeoEYB6WvR2r_hIHCbNGrV9klkCVjQSuCtdB-Zf3OWHXctz_warlNXF4i4VLtkettlxeGRTVpqT-_lO-y2PhHVNe7imEcnceoKWZQe-Z0JBAJ1Gs2_mj_vgL8V2ZKAd7x0uuAcNyqo4Kmvqh75vkhIuGYAbWfY--wdv8cuphNpbKCGoz27n-D_Im8tW00B1_twctwXo8yfZHp46o1yERbTCS1Xu_eBFufKB21au6omxneyKSD47AfHLR_ymvg..Host: localhost:43279..Connection: Keep-Alive....
+#   GET /realms/quarkus/authz/protection/resource_set?matchingUri=true&deep=true&max=-1&exactName=false&uri=%2Fapi%2Fusers%2Fme HTTP/1.1..Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjZklBRE5feHhDSm1Wa1d5Ti1QTlhFRXZNVVdzMnI2OEN4dG1oRUROelhVIn0.eyJleHAiOjE2NTcxMzgzNzAsImlhdCI6MTY1NzEzODA3MCwianRpIjoiY2I1OTc0OTAtYzJjMi00YTFkLThkNmQtMzBkOGU5YzE1YTNlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0MzI3OS9yZWFsbXMvcXVhcmt1cyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI5NDhjNTllYy00NmVkLTRkOTktYWE0My0wMjkwMDAyOWI5MzAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiYWNrZW5kLXNlcnZpY2UiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiXX0sInJlc291cmNlX2FjY2VzcyI6eyJiYWNrZW5kLXNlcnZpY2UiOnsicm9sZXMiOlsidW1hX3Byb3RlY3Rpb24iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImNsaWVudEhvc3QiOiIxNzIuMTcuMC4xIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRJZCI6ImJhY2tlbmQtc2VydmljZSIsInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1iYWNrZW5kLXNlcnZpY2UiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE3LjAuMSIsImVtYWlsIjoic2VydmljZS1hY2NvdW50LWJhY2tlbmQtc2VydmljZUBwbGFjZWhvbGRlci5vcmcifQ.VRcdoJQO5KWeDFprl6g21Gp9lAqLH1GUAegZPslI9lcL7wdEDLauleTs7cr9ODvXpBbbWVZirP445H3bIfEpyZ2UiKeoEYB6WvR2r_hIHCbNGrV9klkCVjQSuCtdB-Zf3OWHXctz_warlNXF4i4VLtkettlxeGRTVpqT-_lO-y2PhHVNe7imEcnceoKWZQe-Z0JBAJ1Gs2_mj_vgL8V2ZKAd7x0uuAcNyqo4Kmvqh75vkhIuGYAbWfY--wdv8cuphNpbKCGoz27n-D_Im8tW00B1_twctwXo8yfZHp46o1yERbTCS1Xu_eBFufKB21au6omxneyKSD47AfHLR_ymvg..Host: 167.86.89.45:43279..Connection: Keep-Alive....
 # #
 # T 127.0.0.1:43279 -> 127.0.0.1:39282 [AP] #127
 #   HTTP/1.1 200 OK..Referrer-Policy: no-referrer..X-Frame-Options: SAMEORIGIN..Strict-Transport-Security: max-age=31536000; includeSubDomains..Cache-Control: no-cache..X-Content-Type-Options: nosniff..X-XSS-Protection: 1; mode=block..Content-Type: application/json..content-length: 236....[{"name":"usersme","owner":{"id":"0ac5df91-e044-4051-bd03-106a3a5fb9cc","name":"backend-service"},"ownerManagedAccess":false,"displayName":"usersme","attributes":{},"_id":"179611c3-be58-4ba2-95b2-4aacda3cc0f1","uris":["/api/users/me"]}]
 # #
 # T 127.0.0.1:39282 -> 127.0.0.1:43279 [AP] #128
-#   POST /realms/quarkus/protocol/openid-connect/token HTTP/1.1..Authorization: Basic YmFja2VuZC1zZXJ2aWNlOnNlY3JldA==..Content-Length: 1231..Content-Type: application/x-www-form-urlencoded; charset=UTF-8..Host: localhost:43279..Connection: Keep-Alive....
+#   POST /realms/quarkus/protocol/openid-connect/token HTTP/1.1..Authorization: Basic YmFja2VuZC1zZXJ2aWNlOnNlY3JldA==..Content-Length: 1231..Content-Type: application/x-www-form-urlencoded; charset=UTF-8..Host: 167.86.89.45:43279..Connection: Keep-Alive....
 # #
 # T 127.0.0.1:39282 -> 127.0.0.1:43279 [AP] #129
 #   audience=backend-service&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Auma-ticket&permission=179611c3-be58-4ba2-95b2-4aacda3cc0f1&subject_token=eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjZklBRE5feHhDSm1Wa1d5Ti1QTlhFRXZNVVdzMnI2OEN4dG1oRUROelhVIn0.eyJleHAiOjE2NTcxMzgzNzYsImlhdCI6MTY1NzEzODA3NiwiYXV0aF90aW1lIjoxNjU3MTM4MDc2LCJqdGkiOiI0ZjMyYzljNS05NzY3LTQ0YzAtOTBlNi1kZmJhNjFmMmJmNDgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQzMjc5L3JlYWxtcy9xdWFya3VzIiwic3ViIjoiZWI0MTIzYTMtYjcyMi00Nzk4LTlhZjUtODk1N2Y4MjM2NTdhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYmFja2VuZC1zZXJ2aWNlIiwibm9uY2UiOiI5SklBc2RhIiwic2Vzc2lvbl9zdGF0ZSI6IjBlZTVkNjRmLWYxM2EtNDg1Yy1hNzBhLTJmMDA0YjQ3MWIwNyIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJ1c2VyIl19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiMGVlNWQ2NGYtZjEzYS00ODVjLWE3MGEtMmYwMDRiNDcxYjA3IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhbGljZSJ9.Jjz0GYaApd_b05YOSe_Eq0tsFQk7qd-vGgIyjdeeEJAAA5xhS2f_DMpwiBLAPibk-gFnGf5CuLynA0z5bxE5vlbQHX9-aKxH8AEixDFkUsnfn7PN1NQtiG-Jj5cfuLxOShy2X2EOScZVTdRc9PgO_Xsb7ltDrtwtQ6eKOYVt-mqd7PR3cWJHjTldh4tiibjrKPccyZNBNC3W03pno3WLRVaG09Kotcsj1e5oS0safAcxACa3CSfchnY88E7Qwi1mva2F4X-gUar5-Zn2yT2iu8vqH3BCHzz8frAsYv1dOougRBaMfayLiFgKo7ZjsOI8OfPDSm7PEOMFEgHEHIloiw

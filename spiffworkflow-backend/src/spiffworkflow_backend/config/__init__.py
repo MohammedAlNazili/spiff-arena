@@ -71,7 +71,7 @@ def setup_database_configs(app: Flask) -> None:
             )
         elif app.config.get("SPIFFWORKFLOW_BACKEND_DATABASE_TYPE") == "postgres":
             app.config["SQLALCHEMY_DATABASE_URI"] = (
-                f"postgresql://spiffworkflow_backend:spiffworkflow_backend@localhost:5432/{database_name}"
+                f"postgresql://spiffworkflow_backend:spiffworkflow_backend@167.86.89.45:5432/{database_name}"
             )
         else:
             # use pswd to trick flake8 with hardcoded passwords

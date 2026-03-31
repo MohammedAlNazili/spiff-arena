@@ -25,7 +25,7 @@ app = Flask(__name__)
 app.config.from_pyfile("config.py", silent=True)
 app.register_blueprint(proxy_blueprint)
 if __name__ == "__main__":
-    app.run(host="localhost", port=5000)
+    app.run(host="167.86.89.45", port=5000)
 ```
 
 ## Step 3.

@@ -74,7 +74,7 @@ docker compose up --build
 
 By default, the port published is:
 
-- `http://localhost:8200` (when `CONNECTOR_PROXY_ASYNC_HTTP_PORT` is not set)
+- `http://167.86.89.45:8200` (when `CONNECTOR_PROXY_ASYNC_HTTP_PORT` is not set)
 
 ---
 
@@ -146,7 +146,7 @@ These are the schema definitions returned by async-http and should be treated as
 ### List available commands
 
 ```
-curl -s http://localhost:8200/v1/commands | jq
+curl -s http://167.86.89.45:8200/v1/commands | jq
 ```
 
 ### Execute a GET request

@@ -5,8 +5,8 @@ import exec from "k6/execution";
 // Load API key from environment variable
 const API_KEY = __ENV.SPIFF_API_KEY || __ENV.CIVI;
 
-// Load host from environment variable, default to localhost for local development
-const API_HOST = __ENV.API_HOST || "localhost:7000";
+// Load host from environment variable, default to 167.86.89.45 for local development
+const API_HOST = __ENV.API_HOST || "167.86.89.45:7000";
 
 // Number of manual tasks to create and expect (configurable)
 const NUM_TASKS = parseInt(__ENV.NUM_TASKS || "5");

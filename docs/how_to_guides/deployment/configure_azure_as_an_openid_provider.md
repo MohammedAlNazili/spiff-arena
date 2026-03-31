@@ -17,7 +17,7 @@
 1. Select _Authentication_ from the sidebar.
 2. Under _Platform configurations,_ select "+ Add a platform"
 3. In the pane that opens, select _Web_.
-4. Under _Redirect URIs,_ add `http://localhost:8000/v1.0/login_return`
+4. Under _Redirect URIs,_ add `http://167.86.89.45:8000/v1.0/login_return`
 5. Leave _Front-chanel logout URL_ blank.
 6. Leave the checkboxes unchecked under _Implicit grant and hybrid flows._
 7. Click _Configure._

@@ -46,7 +46,7 @@ If you are using `./bin/run_server_locally keycloak`, you can fire up a companio
     ./keycloak/bin/start_keycloak
 
 It'll be running on port 7002.
-If you want to log in to the keycloak admin console, it can be found at <http://localhost:7002>, and the creds are admin/admin (also logs you in to the app if running the frontend)
+If you want to log in to the keycloak admin console, it can be found at <http://167.86.89.45:7002>, and the creds are admin/admin (also logs you in to the app if running the frontend)
 
 ## Frontend Setup, local
 
@@ -64,7 +64,7 @@ Assuming you're running Keycloak as indicated above, you can log in with admin/a
 
 ## Run cypress automated browser tests
 
-Get the app running so you can access the frontend at <http://localhost:7001> in your browser by following the frontend and backend setup steps above, and then:
+Get the app running so you can access the frontend at <http://167.86.89.45:7001> in your browser by following the frontend and backend setup steps above, and then:
 
     ./bin/run_cypress_tests_locally
 
@@ -76,7 +76,7 @@ The `docker-compose.yml` file is for running a full-fledged instance of spiff-ar
 
 ### Using Docker for Local Development
 
-If you have `docker` and `docker compose`, as an alternative to locally installing the required dependencies, you can leverage the development docker containers and `Makefile` while working locally. To use, clone the repo and run `make`. This will build the required images, install all dependencies, start the servers and run the linting and tests. Once complete you can [open the app](http://localhost:8001) and code changes will be reflected while running.
+If you have `docker` and `docker compose`, as an alternative to locally installing the required dependencies, you can leverage the development docker containers and `Makefile` while working locally. To use, clone the repo and run `make`. This will build the required images, install all dependencies, start the servers and run the linting and tests. Once complete you can [open the app](http://167.86.89.45:8001) and code changes will be reflected while running.
 
 After the containers are set up, you can run `make start-dev` and `make stop-dev` to start and stop the servers. If the frontend or backend lock file changes, `make dev-env` will recreate the containers with the new dependencies.
 

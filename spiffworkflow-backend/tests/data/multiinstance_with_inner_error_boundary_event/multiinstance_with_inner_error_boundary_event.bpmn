@@ -47,7 +47,7 @@
       <bpmn:scriptTask id="subprocess_script_task">
         <bpmn:incoming>Flow_1504tu0</bpmn:incoming>
         <bpmn:outgoing>Flow_0n92gsy</bpmn:outgoing>
-        <bpmn:script>url = "http://localhost:7001/v1.0/status"
+        <bpmn:script>url = "http://167.86.89.45:7001/v1.0/status"
 
 if index == 2:
    url = "DNE"</bpmn:script>

@@ -20,10 +20,10 @@ WORKDIR /opt/keycloak
 COPY spifftheme /opt/keycloak/themes/spifftheme
 
 # for demonstration purposes only, please make sure to use proper certificates in production instead
-# RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
+# RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:167.86.89.45,IP:127.0.0.1" -keystore conf/server.keystore
 # # change these values to point to a running postgres instance
 # ENV KC_DB_URL=<DBURL>
 # ENV KC_DB_USERNAME=<DBUSERNAME>
 # ENV KC_DB_PASSWORD=<DBPASSWORD>
-# ENV KC_HOSTNAME=localhost
+# ENV KC_HOSTNAME=167.86.89.45
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]

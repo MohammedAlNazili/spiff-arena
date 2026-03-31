@@ -51,7 +51,7 @@ def load_test(message_identifier, num_requests=10, max_workers=5, username="admi
     Perform load testing with concurrent requests and failure logging
     """
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    backend_base_url = os.environ.get("BACKEND_BASE_URL", "http://localhost:7000")
+    backend_base_url = os.environ.get("BACKEND_BASE_URL", "http://167.86.89.45:7000")
 
     # Get access token once
     access_token = get_access_token(script_dir, username, password, realm_name)

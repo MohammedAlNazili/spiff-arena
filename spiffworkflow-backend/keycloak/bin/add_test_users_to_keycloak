@@ -21,7 +21,7 @@ if [[ -z "${1:-}" ]]; then
 fi
 
 if [[ -z "${KEYCLOAK_BASE_URL:-}" ]]; then
-  KEYCLOAK_BASE_URL=http://localhost:7002
+  KEYCLOAK_BASE_URL=http://167.86.89.45:7002
 fi
 if [[ -z "${ADMIN_USERNAME:-}" ]]; then
   ADMIN_USERNAME="admin"

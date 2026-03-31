@@ -4,8 +4,8 @@ Keycloak is an open-source identity and access management solution that provides
 
 This guide outlines the steps to configure Keycloak for a client, including **granting admin privileges** within a realm and **allowing users to log in using Google authentication**.
 
-**NOTE** If running spiffworkflow and keycloak through docker compose, you may need to set "SPIFFWORKFLOW_BACKEND_OPEN_ID_ADDITIONAL_VALID_ISSUERS" in the backend to contain the appropriate localhost domain for keycloak.
-Otherwise, backend will talk to keycloak with a docker compose network host and the web client will use localhost and that will invalidate the token.
+**NOTE** If running spiffworkflow and keycloak through docker compose, you may need to set "SPIFFWORKFLOW_BACKEND_OPEN_ID_ADDITIONAL_VALID_ISSUERS" in the backend to contain the appropriate 167.86.89.45 domain for keycloak.
+Otherwise, backend will talk to keycloak with a docker compose network host and the web client will use 167.86.89.45 and that will invalidate the token.
 
 ## **1. Super Admin Tasks: Allowing Realm User Management**  
 
@@ -50,9 +50,9 @@ For a client named **Civitos**, the URL would be:
 https://keycloak-civitos.spiff.works/admin/spiffworkflow/console/#/spiffworkflow/users
 ```
 
-For localhost, it would be:
+For 167.86.89.45, it would be:
 ```
-http://localhost:7002/admin/[REALM_NAME]/console
+http://167.86.89.45:7002/admin/[REALM_NAME]/console
 ```
 
 ## **2. Allowing Everyone from Your Domain to Log into an Instance**  
@@ -116,8 +116,8 @@ Before proceeding, ensure the following:
 * A valid Keycloak user has been created with access roles (e.g., `user-group`, `admin-group`).
 * If using the local setup:
 
-  * Keycloak runs on `localhost:7002`
-  * Backend runs on `localhost:7000`
+  * Keycloak runs on `167.86.89.45:7002`
+  * Backend runs on `167.86.89.45:7000`
 
 ### Starting Keycloak & Backend (Local Setup)
 
@@ -149,7 +149,7 @@ curl -X POST https://keycloak-[client].spiff.works/realms/spiffworkflow/protocol
 Alternatively, for local development:
 
 ```bash
-KEYCLOAK_BASE_URL=http://localhost:7002 ./bin/get_token > /tmp/token
+KEYCLOAK_BASE_URL=http://167.86.89.45:7002 ./bin/get_token > /tmp/token
 ```
 
 ### Making API Requests to SpiffWorkflow
@@ -157,7 +157,7 @@ KEYCLOAK_BASE_URL=http://localhost:7002 ./bin/get_token > /tmp/token
 Once you have an access token, use it to call protected endpoints:
 
 ```bash
-curl http://localhost:7000/v1.0/process-groups \
+curl http://167.86.89.45:7000/v1.0/process-groups \
   -H "Authorization: Bearer $(cat /tmp/token)"
 ```
 

@@ -38,7 +38,7 @@ else
   )"
 
   if [[ -z "${BACKEND_BASE_URL:-}" ]]; then
-    export BACKEND_BASE_URL=http://localhost:7000
+    export BACKEND_BASE_URL=http://167.86.89.45:7000
   fi
 
   access_token=$(uv run python "${script_dir}/get_token" "$username" "$password" "$realm_name" 2>/tmp/spiff_token.log)
@@ -50,7 +50,7 @@ else
 fi
 
 if [[ -z "${BACKEND_BASE_URL:-}" ]]; then
-  export BACKEND_BASE_URL=http://localhost:7000
+  export BACKEND_BASE_URL=http://167.86.89.45:7000
 fi
 
 if ! grep -qE '^https?:' <<<"$api_path"; then

@@ -31,7 +31,7 @@ if [[ -n "${SPIFFWORKFLOW_BACKEND_ENV:-}" ]] && ! grep -Eq '^(local_development|
   exit 1
 fi
 
-database_host="localhost"
+database_host="167.86.89.45"
 database_port=""
 database_username="root"
 database_password=""

@@ -76,7 +76,7 @@ config_from_env("SPIFFWORKFLOW_BACKEND_BACKGROUND_SCHEDULER_USER_INPUT_REQUIRED_
 
 ### background with celery
 config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_ENABLED", default=False)
-config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_BROKER_URL", default="redis://localhost")
+config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_BROKER_URL", default="redis://167.86.89.45")
 config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_RESULT_BACKEND", default=None)
 config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_SQS_URL", default=None)
 config_from_env("SPIFFWORKFLOW_BACKEND_CELERY_RESULT_S3_BUCKET", default=None)
@@ -87,8 +87,8 @@ config_from_env("SPIFFWORKFLOW_BACKEND_BACKGROUND_SCHEDULER_FUTURE_TASK_LOOKAHEA
 config_from_env("SPIFFWORKFLOW_BACKEND_BACKGROUND_SCHEDULER_FUTURE_TASK_EXECUTION_INTERVAL_IN_SECONDS", default=300)
 
 ### frontend
-config_from_env("SPIFFWORKFLOW_BACKEND_URL_FOR_FRONTEND", default="http://localhost:7001")
-config_from_env("SPIFFWORKFLOW_BACKEND_URL", default="http://localhost:7000")
+config_from_env("SPIFFWORKFLOW_BACKEND_URL_FOR_FRONTEND", default="http://167.86.89.45:7001")
+config_from_env("SPIFFWORKFLOW_BACKEND_URL", default="http://167.86.89.45:7000")
 config_from_env("SPIFFWORKFLOW_BACKEND_CHECK_FRONTEND_AND_BACKEND_URL_COMPATIBILITY", default=True)
 cors_allow_all = "*"
 SPIFFWORKFLOW_BACKEND_CORS_ALLOW_ORIGINS = re.split(
@@ -97,7 +97,7 @@ SPIFFWORKFLOW_BACKEND_CORS_ALLOW_ORIGINS = re.split(
 )
 
 ### service task connector proxy
-config_from_env("SPIFFWORKFLOW_BACKEND_CONNECTOR_PROXY_URL", default="http://localhost:7004")
+config_from_env("SPIFFWORKFLOW_BACKEND_CONNECTOR_PROXY_URL", default="http://167.86.89.45:7004")
 config_from_env("SPIFFWORKFLOW_BACKEND_CONNECTOR_PROXY_API_KEY", default=None)
 config_from_env(
     "SPIFFWORKFLOW_BACKEND_CONNECTOR_PROXY_TYPEAHEAD_URL",
@@ -135,7 +135,7 @@ config_from_env("SPIFFWORKFLOW_BACKEND_OPEN_ID_SCOPES", default="openid,profile,
 config_from_env("SPIFFWORKFLOW_BACKEND_OPEN_ID_ENFORCE_PKCE", default=False)  # Set to enforce OAuth PKCE (recommended)
 
 # Open ID server
-# use "http://localhost:7000/openid" for running with simple openid
+# use "http://167.86.89.45:7000/openid" for running with simple openid
 # server hosted by spiffworkflow-backend
 if "SPIFFWORKFLOW_BACKEND_AUTH_CONFIGS" in configs_with_structures:
     SPIFFWORKFLOW_BACKEND_AUTH_CONFIGS = configs_with_structures["SPIFFWORKFLOW_BACKEND_AUTH_CONFIGS"]
@@ -166,8 +166,8 @@ else:
             {
                 "identifier": "default",
                 "label": "Default",
-                "internal_uri": "http://localhost:7002/realms/spiffworkflow-local",
-                "uri": "http://localhost:7002/realms/spiffworkflow-local",
+                "internal_uri": "http://167.86.89.45:7002/realms/spiffworkflow-local",
+                "uri": "http://167.86.89.45:7002/realms/spiffworkflow-local",
                 "client_id": "spiffworkflow-backend",
                 "client_secret": "JXeQExm0JhQPLumgHtIIqf52bDalHz0q",
                 "additional_valid_client_ids": None,

@@ -836,7 +836,7 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "JXeQExm0JhQPLumgHtIIqf52bDalHz0q",
       "redirectUris": [
-        "http://localhost:7000/*",
+        "http://167.86.89.45:7000/*",
         "https://replace-me-with-spiff-backend-host-and-path/*",
         "http://67.205.133.116:7000/*",
         "http://167.172.242.138:7000/*"
@@ -857,7 +857,7 @@
         "saml.force.post.binding": "false",
         "saml.multivalued.roles": "false",
         "frontchannel.logout.session.required": "false",
-        "post.logout.redirect.uris": "https://replace-me-with-spiff-frontend-host-and-path/*##http://localhost:7001/*",
+        "post.logout.redirect.uris": "https://replace-me-with-spiff-frontend-host-and-path/*##http://167.86.89.45:7001/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "saml.server.signature.keyinfo.ext": "false",
@@ -1107,7 +1107,7 @@
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
         "https://api.unused-for-local-dev.spiffworkflow.org/*",
-        "http://localhost:7001/*",
+        "http://167.86.89.45:7001/*",
         "http://67.205.133.116:7000/*",
         "http://167.172.242.138:7001/*",
         "https://api.demo.spiffworkflow.org/*"
@@ -1178,7 +1178,7 @@
       "secret": "6o8kIKQznQtejHOdRhWeKorBJclMGcgA",
       "redirectUris": [
         "https://api.unused-for-local-dev.spiffworkflow.org/*",
-        "http://localhost:7001/*",
+        "http://167.86.89.45:7001/*",
         "http://67.205.133.116:7000/*",
         "http://167.172.242.138:7001/*",
         "https://api.demo.spiffworkflow.org/*"

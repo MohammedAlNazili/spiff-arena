@@ -11,7 +11,7 @@ max_attempts="${1:-100}"
 port="${2:-7000}"
 
 attempts=0
-backend_base_url="http://localhost:${port}"
+backend_base_url="http://167.86.89.45:${port}"
 echo "waiting for backend to come up at ${backend_base_url} ..."
 while [[ "$(curl -s -o /dev/null -w '%{http_code}' "${backend_base_url}/v1.0/status")" != "200" ]]; do
   if [[ "$attempts" -gt "$max_attempts" ]]; then

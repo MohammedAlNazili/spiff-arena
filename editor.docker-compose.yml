@@ -19,8 +19,8 @@ services:
       SPIFFWORKFLOW_BACKEND_ENV: "local_development"
       FLASK_DEBUG: "0"
       FLASK_SESSION_SECRET_KEY: "${FLASK_SESSION_SECRET_KEY:-super_secret_key}"
-      # WARNING: Frontend is a static site which assumes frontend port - 1 on localhost.
-      SPIFFWORKFLOW_BACKEND_URL: "http://localhost:${SPIFF_BACKEND_PORT:-8000}"
+      # WARNING: Frontend is a static site which assumes frontend port - 1 on 167.86.89.45.
+      SPIFFWORKFLOW_BACKEND_URL: "http://167.86.89.45:${SPIFF_BACKEND_PORT:-8000}"
 
       SPIFFWORKFLOW_BACKEND_BPMN_SPEC_ABSOLUTE_DIR: "/app/process_models"
       SPIFFWORKFLOW_BACKEND_CONNECTOR_PROXY_URL: "http://spiffworkflow-connector:8004"
@@ -29,19 +29,19 @@ services:
       SPIFFWORKFLOW_BACKEND_AUTHENTICATION_DISABLED: "true"
       SPIFFWORKFLOW_BACKEND_OPEN_ID_CLIENT_ID: "spiffworkflow-backend"
       SPIFFWORKFLOW_BACKEND_OPEN_ID_CLIENT_SECRET_KEY: "my_open_id_secret_key"
-      SPIFFWORKFLOW_BACKEND_OPEN_ID_SERVER_URL: "http://localhost:${SPIFF_BACKEND_PORT:-8000}/openid"
+      SPIFFWORKFLOW_BACKEND_OPEN_ID_SERVER_URL: "http://167.86.89.45:${SPIFF_BACKEND_PORT:-8000}/openid"
       SPIFFWORKFLOW_BACKEND_PERMISSIONS_FILE_NAME: "example.yml"
       SPIFFWORKFLOW_BACKEND_PORT: "${SPIFF_BACKEND_PORT:-8000}"
       SPIFFWORKFLOW_BACKEND_RUN_BACKGROUND_SCHEDULER_IN_CREATE_APP: "false"
       SPIFFWORKFLOW_BACKEND_UPGRADE_DB: "true"
-      SPIFFWORKFLOW_BACKEND_URL_FOR_FRONTEND: "http://localhost:${SPIFFWORKFLOW_FRONTEND_PORT:-8001}"
+      SPIFFWORKFLOW_BACKEND_URL_FOR_FRONTEND: "http://167.86.89.45:${SPIFFWORKFLOW_FRONTEND_PORT:-8001}"
     ports:
       - "${SPIFF_BACKEND_PORT:-8000}:${SPIFF_BACKEND_PORT:-8000}/tcp"
     volumes:
       - "${SPIFF_EDITOR_BPMN_SPEC_DIR:-./process_models}:/app/process_models"
       - ./log:/app/log
     healthcheck:
-      test: "curl localhost:${SPIFF_BACKEND_PORT:-8000}/v1.0/status --fail"
+      test: "curl 167.86.89.45:${SPIFF_BACKEND_PORT:-8000}/v1.0/status --fail"
       interval: 10s
       timeout: 5s
       retries: 20
@@ -57,7 +57,7 @@ services:
     ports:
       - "${SPIFF_CONNECTOR_PORT:-8004}:${SPIFF_CONNECTOR_PORT:-8004}/tcp"
     healthcheck:
-      test: "curl localhost:${SPIFF_CONNECTOR_PORT:-8004}/liveness --fail"
+      test: "curl 167.86.89.45:${SPIFF_CONNECTOR_PORT:-8004}/liveness --fail"
       interval: 10s
       timeout: 5s
       retries: 20

@@ -118,7 +118,7 @@ def message_instance_search(
 # }
 #
 # For example:
-# curl 'http://localhost:7000/v1.0/messages/gogo' \
+# curl 'http://167.86.89.45:7000/v1.0/messages/gogo' \
 #  -H 'authorization: Bearer [FIXME]' \
 #  -H 'content-type: application/json' \
 #  --data-raw '{"payload":{"sure": "yes", "food": "spicy"}}'

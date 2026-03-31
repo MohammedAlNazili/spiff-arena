@@ -1,6 +1,6 @@
 import os
 
-BASE_URL = os.getenv("E2E_URL", "http://localhost:7001")
+BASE_URL = os.getenv("E2E_URL", "http://167.86.89.45:7001")
 
 CONFIG = {
     "base_url": BASE_URL,

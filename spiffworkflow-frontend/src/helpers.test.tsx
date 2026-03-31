@@ -99,8 +99,8 @@ test('it can replace null values in object with undefined', () => {
 
 test('it can identify urls', () => {
   const urls = [
-    'http://localhost:7001/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
-    'http://localhost/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
+    'http://167.86.89.45:7001/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
+    'http://167.86.89.45/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
     'https://www.google.com',
   ];
   urls.forEach((url: string) => {
@@ -108,8 +108,8 @@ test('it can identify urls', () => {
     expect(result).toBe(true);
   });
   const badUrls = [
-    'localhost:7001/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
-    'localhost/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
+    '167.86.89.45:7001/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
+    '167.86.89.45/public/tasks/94/61efeb05-7278-4de8-979d-b4580cfc0233',
     'www.google.com',
   ];
   badUrls.forEach((url: string) => {

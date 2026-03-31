@@ -151,7 +151,7 @@ def token() -> Response:
 
 @openid_blueprint.route("/end_session", methods=["GET"])
 def end_session() -> Response:
-    redirect_url = request.args.get("post_logout_redirect_uri", "http://localhost")
+    redirect_url = request.args.get("post_logout_redirect_uri", "http://167.86.89.45")
     request.args.get("id_token_hint")
     response = redirect(redirect_url)
     return make_response(response.get_data(), response.status_code, response.headers)
@@ -192,7 +192,7 @@ def get_users() -> Any:
         return {}
 
 
-# if backend is being hosted at http://localhost:7000/api because SPIFFWORKFLOW_BACKEND_WSGI_PATH_PREFIX=/api,
-# this will return http://localhost:7000, because url_for will add the /api for us.
+# if backend is being hosted at http://167.86.89.45:7000/api because SPIFFWORKFLOW_BACKEND_WSGI_PATH_PREFIX=/api,
+# this will return http://167.86.89.45:7000, because url_for will add the /api for us.
 def _host_url_without_root_path() -> str:
     return request.host_url.strip("/")

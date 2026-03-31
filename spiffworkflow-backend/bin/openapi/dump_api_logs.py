@@ -21,7 +21,7 @@ import mysql.connector
 
 def connect_to_db():
     """Connect to the MySQL database using environment variables."""
-    db_host = os.environ.get("DB_HOST", "localhost")
+    db_host = os.environ.get("DB_HOST", "167.86.89.45")
     db_user = os.environ.get("DB_USER", "root")
     db_name = os.environ.get("DB_NAME", "spiffworkflow_backend_local_development")
     db_password = os.environ.get("DB_PASSWORD", "")

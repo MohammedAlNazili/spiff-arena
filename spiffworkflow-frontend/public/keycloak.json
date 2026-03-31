@@ -1,6 +1,6 @@
 {
   "realm": "spiffworkflow",
-  "auth-server-url": "http://localhost:7002/",
+  "auth-server-url": "http://167.86.89.45:7002/",
   "ssl-required": "external",
   "resource": "spiffworkflow-frontend",
   "public-client": true,
